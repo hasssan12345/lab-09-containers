@@ -1,0 +1,20 @@
+INFO Found credentials in shared credentials file: ~/.aws/credentials
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/app/src/book_analysis/analyze.py", line 204, in <module>
+    main()
+    ~~~~^^
+  File "/app/src/book_analysis/analyze.py", line 184, in main
+    keys = get_book_keys(args.bucket)[: args.limit]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/app/src/book_analysis/analyze.py", line 68, in get_book_keys
+    response = boto3.client("s3", region_name=REGION).list_objects_v2(Bucket=bucket)
+  File "/app/.venv/lib/python3.13/site-packages/botocore/client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/app/.venv/lib/python3.13/site-packages/botocore/client.py", line 1094, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.AccessDenied: An error occurred (AccessDenied) when calling the ListObjectsV2 operation: User: arn:aws:sts::338111690562:assumed-role/voclabs/user5556984=rka3dw@virginia.edu is not authorized to perform: s3:ListBucket on resource: "arn:aws:s3:::public-rka3dw" with an explicit deny in a service control policy: arn:aws:organizations::335365539316:policy/o-etzxle6h3d/service_control_policy/p-n0qtpmnn
